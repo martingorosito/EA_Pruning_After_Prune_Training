@@ -1,6 +1,7 @@
-# EA_pruning
-Evolutionary Algorithms and pruning: Comparison of three after-prune training methods
+# Evolutionary Algorithms and pruning: Comparison of three after-prune training methods
 
-Abstract
+In this project we use evolutionary algorithms to find pruned networks out of  feed forward neural networks that improve their overall performance.
+
+## Description
 
 Designing and developing a neural network can be challenging as there are many parameters and design decisions that have to be made. Pruning is one of these decisions, and one that is taking more relevance for its ability to reduce the network’s overall size and cost and increase its speed. However, the lack of processes for pruning makes the whole venture a matter of trial and error. On this paper, we propose an evolutionary approach to find pruned networks out of feed forward fully connected ones that improve their overall performance. Furthermore, we test three different approaches regarding the training of the pruned network, i.e. no training at all, retrain the network after the pruning or instantiate a new network with its connection pruned, on six different datasets. Each individual is represented as a binary string, that represents the connections on the network and three different fitness functions are implemented, one for every approach mentioned before. The algorithms do not provide just one network, but also all those that have the same fitness as the best one, avoiding duplicates. This helped us compare the methods and evaluate the algorithms. Plus, each pruned network found is tested using the 5x2 cross-validation combined F test to determine whether the pruned network improves or deteriorates the performance on unseen data of the fully connected one. The results show that the “No Training” approach is completely unviable as no positive outcomes are found. However, the remaining approaches retrieve improved networks, having the best effects on larger networks. The overall results show a positive step towards a possible method for finding a pruned topology that performs better than the fully connected one.
