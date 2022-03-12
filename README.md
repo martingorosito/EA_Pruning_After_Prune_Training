@@ -4,7 +4,7 @@ In this project we use evolutionary algorithms to find pruned networks out of fe
 
 ## Description
 
-We use six different datasets and implement a neural network for each of them. Then we use binary strings to represent the weight matrices, and use them as individuals for the evolutionary search. The ones and zeros represent whether or not the weight is present or pruned respectively. We run three different algorithms with the same characteristics, except the fitness function, whcih is valued according to the after-prune method being tested: "No Training" (NT), "Train after Prune" (TAP) and "Train from Scratch" (TFS). 
+We use six different datasets and implement a neural network for each of them. Then we use binary strings to represent the weight matrices, and use them as individuals for the evolutionary search. The ones and zeros represent whether or not the weight is present or pruned respectively. We run three different algorithms with the same characteristics, except the fitness function, whcih is valued according to the after-prune method being tested: "No Training" (NT), "Train after Prune" (TAP) and "Train from Scratch" (TFS). Each EA search was run 10 times with different seeds.
 
 ### Datasets and network characteristics
 
@@ -25,7 +25,7 @@ Before the algorithm begins, the datasets are divided into a training set and a 
 Each individual is represented as a binary string, which is a concatenation of the three weight matrices. These can then be reshaped into a pruning mask.
 The algorithms have a benchmark individual, which is the feed forward network with all of its connections present. This individual is trained on the sub-training set and tested on the validation set. This is the network thas is pruned through the search. 
 
-For reproduction, we use three individual tournament selection with two winners being selected to be parents. These generate one offspring using uniform crossover. The offspring is mutated using bitflip. The process is repeated 20 times to generate a new population, as the offspring is chosen to survive. The previous generation is discarded. 
+For reproduction, we use three individual tournament selection with two winners being selected to be parents. These generate one offspring using uniform crossover. The offspring is mutated using bitflip.
 
 The fitness functions is where the algorithms differ. For the "No Training" method, the individual is pruned and tested on the validation set. The accuracy of the individual is used as its fitness value. 
 For the "Train from Scratch" method, a new network is instantiated, pruned and trained using the sub-training set. The accuracy on the validation set is used as a fitness value. 
@@ -34,9 +34,24 @@ For the "Train after Prune" mehtod, the network is pruned, then retrained some m
 The individuals found are all kept on a history list. Then those that share the same fitness with the best individuals found are kept as results of the EA search. Finally, each of these are evaluated using combined 5x2 cv F Test. 
 
 ## Results
+The EA search show that the "No Training" method produces no improved networks, with significant deterioration to their accuracy on test data. 
 
+As for the "Train from Scratch" and the "Train after Prune" methods, their results are quite similar, both being able to produce improved networks. To compare these we use the following formula:
 
+EO = PAN ( PBI * AI + (1 - PBI) * AD)
 
+with:
+- EO = Expected Output
+- PAN = Percentage of Accepted Networks. These are the networks that passed the 5x2 cv F test
+- PBI = Percentage of Better Individuals. The accepted networks that improve on the benchmark individual
+- AI = Average improvement
+- AD = Average deterioration
+
+The results for this formula can be summarized in the following graph:
+
+![image](https://user-images.githubusercontent.com/29287072/158018131-271f9386-f72f-4b08-977a-7094d359e684.png)
+
+This shows how larger networks are more suitable for pruning using EA, as the networks used for the Sonar and Ionosphere datasets are the ones that most benefit from it. Nonetheless, the project did not provide a definitive answer as to which method is the best, but rather gave us an idea to it. Furthermore, it was noted that since the initial individuals are generated using uniformly random distribution, that the density of weights would average at 50%, which is a lot to prune from a network. 
 
 ### Links
 [Cantú-Paz, E., & Kamath, C. (2005). An empirical comparison of combinations of evolutionary algorithms and neural networks for classification problems](<https://ieeexplore.ieee.org/document/1510768>)
