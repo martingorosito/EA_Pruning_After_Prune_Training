@@ -2,7 +2,7 @@
 
 In this project we use evolutionary algorithms to find pruned networks out of feed forward neural networks that improve their overall performance. Furthermore, we test three different approaches regarding the training of the pruned network, i.e. no training, retrain the network or re-instantiate a new network with its connections pruned.
 
-For further details please read the Applied Research Project [report](<https://github.com/martingorosito/EA_Pruning_After_Prune_Training/blob/main/ARP%20Report/Gorosito%2C%20Martin%20(26567)%20ARP.pdf>)
+For further details please read the Applied Research Project [report](<https://github.com/martingorosito/EA_Pruning_After_Prune_Training/blob/main/ARP%20Report/Gorosito%2C%20Martin%20(26567)%20ARP.pdf>).
 
 ## Description
 
