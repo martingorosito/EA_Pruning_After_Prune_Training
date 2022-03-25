@@ -6,7 +6,7 @@ For further details please read the Applied Research Project [report](<https://g
 
 ## Description
 
-We use six different datasets and implement a neural network for each of them. Then we use binary strings to represent the weight matrices, and use them as individuals for the evolutionary search. The ones and zeros represent whether or not the weight is present or pruned respectively. We run three different algorithms with the same characteristics, except the fitness function, whcih is valued according to the after-prune method being tested: "No Training" (NT), "Train after Prune" (TAP) and "Train from Scratch" (TFS). Each EA search was run 10 times with different seeds.
+We use six different datasets and implement a neural network for each of them. Then we use binary strings to represent the weight matrices, and use them as individuals for the evolutionary search. The ones and zeros represent whether or not the weight is present or pruned respectively. We run three separate algorithms with the same characteristics, except the fitness function, whcih is valued according to the after-prune method being tested: "No Training" (NT), "Train after Prune" (TAP) and "Train from Scratch" (TFS). Each EA search was run 10 times with different seeds.
 
 ### Datasets and network characteristics
 
